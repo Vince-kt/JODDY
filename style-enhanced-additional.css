@@ -1,0 +1,402 @@
+/* ========================================
+   ADDITIONAL ENHANCEMENTS FOR NEW SECTIONS
+   ======================================== */
+
+/* ========================================
+   CTA SECTION (Two Column)
+   ======================================== */
+.cta-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 60px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(6, 83, 29, 0.1), rgba(6, 83, 29, 0.05));
+    border-radius: 20px;
+}
+
+html[data-theme="dark"] .cta-section {
+    background: linear-gradient(135deg, rgba(124, 255, 129, 0.1), rgba(124, 255, 129, 0.05));
+}
+
+.cta-section > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cta-section h2 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+html[data-theme="dark"] .cta-section h2 {
+    color: #7cff81;
+}
+
+.cta-section p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ========================================
+   TESTIMONIALS SECTION
+   ======================================== */
+.testimonials {
+    margin: 60px auto;
+    padding: 40px 0;
+}
+
+.testimonials .cards-grid {
+    margin: 0;
+}
+
+.testimonial-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-left: 5px solid var(--primary-color);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.testimonial-card .stars {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.testimonial-card p {
+    margin: 10px 0;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.testimonial-card .author {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 15px !important;
+}
+
+html[data-theme="dark"] .testimonial-card .author {
+    color: #7cff81;
+}
+
+/* ========================================
+   TRUST & SAFETY SECTION
+   ======================================== */
+.trust-section {
+    margin: 60px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(74, 209, 85, 0.1), rgba(74, 209, 85, 0.05));
+    border-radius: 20px;
+}
+
+html[data-theme="dark"] .trust-section {
+    background: linear-gradient(135deg, rgba(124, 255, 129, 0.1), rgba(124, 255, 129, 0.05));
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.trust-item {
+    text-align: center;
+}
+
+.trust-item h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+html[data-theme="dark"] .trust-item h3 {
+    color: #7cff81;
+}
+
+.trust-item p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ========================================
+   FINAL CTA SECTION
+   ======================================== */
+.final-cta {
+    text-align: center;
+    padding: 60px 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 20px;
+    margin: 60px auto;
+    color: white;
+}
+
+.final-cta h2 {
+    color: var(--text-color);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.final-cta p {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.final-cta .btn {
+    background: var(--text-color);
+    color: var(--primary-color);
+}
+
+.final-cta .btn:hover {
+    background: var(--accent-color);
+}
+
+/* ========================================
+   CATEGORIES SECTION
+   ======================================== */
+.categories {
+    margin: 60px auto;
+    padding: 0;
+}
+
+.categories .cards-grid {
+    margin: 0;
+}
+
+.category-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.cat-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.category-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+html[data-theme="dark"] .category-card h3 {
+    color: #7cff81;
+}
+
+.category-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ========================================
+   JOB RATING
+   ======================================== */
+.job-rating {
+    color: #ff9800;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin: 10px 0;
+}
+
+/* ========================================
+   TWO COLUMN LAYOUT
+   ======================================== */
+.two-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE IMPROVEMENTS
+   ======================================== */
+@media (max-width: 768px) {
+    .cta-section {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .categories .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .final-cta {
+        padding: 40px 20px;
+        margin: 40px auto;
+    }
+
+    .final-cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .final-cta p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-section {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .trust-item {
+        padding: 15px;
+    }
+
+    .categories .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        padding: 20px;
+    }
+
+    .final-cta {
+        padding: 30px 15px;
+        margin: 30px 0;
+    }
+
+    .final-cta h2 {
+        font-size: 1.5rem;
+    }
+
+    .final-cta p {
+        font-size: 0.95rem;
+    }
+
+    .final-cta > div {
+        flex-direction: column;
+    }
+
+    .final-cta .btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   FOOTER STYLES
+   ======================================== */
+.site-footer {
+    background: var(--primary);
+    color: var(--secondary);
+    padding: 3rem 1rem 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+.footer-section h4 {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-section p {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section a:hover {
+    color: var(--secondary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-bottom p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+}
+
+html[data-theme="dark"] .site-footer {
+    background: #0d3d12;
+}

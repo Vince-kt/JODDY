@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - JODDY</title>
+    <link rel="stylesheet" href="style-enhanced.css">
+    <meta name="description" content="JODDY - Browse available jobs and opportunities">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧹</text></svg>">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+    <div class="header-container">
+        <a href="homepage-enhanced.html" class="logo">
+            <span class="logo-icon">🧹</span>
+            <div class="logo-text">
+                <h1>JODDY</h1>
+                <span class="tagline">Local Help, Earn Money</span>
+            </div>
+        </a>
+        <nav class="header-nav">
+            <a href="homepage-enhanced.html">Home</a>
+            <a href="profile-enhanced.html">Profile</a>
+            <a href="jobs-enhanced.html" class="active">Jobs</a>
+            <a href="contact-enhanced.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn" aria-label="Search">🔍</button>
+            <button class="icon-btn" aria-label="Notifications">🔔</button>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+            <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+        <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
+        <a href="homepage-enhanced.html">Home</a>
+        <a href="profile-enhanced.html">Profile</a>
+        <a href="jobs-enhanced.html">Jobs</a>
+        <a href="contact-enhanced.html">Contact</a>
+    </nav>
+</header>
+
+<main id="main" class="container">
+    <!-- Hero Section -->
+    <div class="jobs-hero fade-in">
+        <h2>🎯 Find Your Perfect Job</h2>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Active Jobs</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">1000+</span>
+                <span class="stat-label">Happy Workers</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Support</span>
+            </div>
+        </div>
+        <p>Browse jobs posted by customers. Find opportunities that match your skills and schedule.</p>
+        <a href="#cards" class="btn btn-large">Start Browsing</a>
+    </div>
+
+    <!-- Jobs Section -->
+    <section id="cards" class="cards-section fade-in">
+        <h2 class="section-title">Available Opportunities</h2>
+        
+        <!-- Advanced Filters -->
+        <div class="filter-section">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Jobs</button>
+                <button class="filter-btn" data-filter="cleaning">🧹 Cleaning</button>
+                <button class="filter-btn" data-filter="gardening">🌱 Gardening</button>
+                <button class="filter-btn" data-filter="handyman">🔧 Handyman</button>
+            </div>
+        </div>
+
+        <!-- Job Cards Grid -->
+        <div class="cards-grid">
+            <!-- Cleaning Job 1 -->
+            <article class="card job-card fade-in" data-category="cleaning">
+                <img src="images/vitaly-gariev-2NcTLdFHpH8-unsplash.jpg" alt="Apartment cleaning service" class="card-image">
+                <div class="card-content">
+                    <h3>✨ Apartment Deep Clean</h3>
+                    <p class="job-details">📍 Downtown • ⏱️ 3 hours • 💰 KES 3,000-5,000</p>
+                    <p class="job-description">Professional deep cleaning service for 2-bedroom apartment including all rooms, bathrooms, and kitchen.</p>
+                    <div class="job-rating">⭐⭐⭐⭐⭐ (12 reviews)</div>
+                    <button class="btn btn-apply" data-modal-trigger>Apply Now</button>
+                </div>
+            </article>
+
+            <!-- Gardening Job 1 -->
+            <article class="card job-card fade-in" data-category="gardening">
+                <img src="images/maxim-tolchinskiy-5H0swzTVzrY-unsplash.jpg" alt="Lawn mowing service" class="card-image">
+                <div class="card-content">
+                    <h3>🌱 Lawn Mowing & Trimming</h3>
+                    <p class="job-details">📍 Westside • ⏱️ 2 hours • 💰 KES 2,000 flat</p>
+                    <p class="job-description">Mow lawn and trim hedges for residential property. Experience with small lawns required.</p>
+                    <div class="job-rating">⭐⭐⭐⭐⭐ (8 reviews)</div>
+                    <button class="btn btn-apply" data-modal-trigger>Apply Now</button>
+                </div>
+            </article>
+
+            <!-- Handyman Job 1 -->
+            <article class="card job-card fade-in" data-category="handyman">
+                <img src="images/ali-mkumbwa-PxlKOcj0a3Q-unsplash.jpg" alt="Furniture assembly service" class="card-image">
+                <div class="card-content">
+                    <h3>🔨 Furniture Assembly</h3>
+                    <p class="job-details">📍 Suburb • ⏱️ 1.5 hours • 💰 KES 1,500</p>
+                    <p class="job-description">Assemble IKEA furniture for new apartment setup. Must have own tools.</p>
+                    <div class="job-rating">⭐⭐⭐⭐ (15 reviews)</div>
+                    <button class="btn btn-apply" data-modal-trigger>Apply Now</button>
+                </div>
+            </article>
+
+            <!-- Cleaning Job 2 -->
+            <article class="card job-card fade-in" data-category="cleaning">
+                <img src="images/cdc-jjrXvzbqC5E-unsplash.jpg" alt="House cleaning service" class="card-image">
+                <div class="card-content">
+                    <h3>🏠 House Cleaning Service</h3>
+                    <p class="job-details">📍 Eastside • ⏱️ 4 hours • 💰 KES 2,800-3,500/hr</p>
+                    <p class="job-description">Comprehensive house cleaning for family home. Includes vacuuming, dusting, and mopping all rooms.</p>
+                    <div class="job-rating">⭐⭐⭐⭐⭐ (20 reviews)</div>
+                    <button class="btn btn-apply" data-modal-trigger>Apply Now</button>
+                </div>
+            </article>
+
+            <!-- Handyman Job 2 -->
+            <article class="card job-card fade-in" data-category="handyman">
+                <img src="images/anthony-fomin-Apips1tJsXo-unsplash.jpg" alt="Interior painting service" class="card-image">
+                <div class="card-content">
+                    <h3>🎨 Interior Painting</h3>
+                    <p class="job-details">📍 Central • ⏱️ 5 hours • 💰 KES 2,240-3,500/hr</p>
+                    <p class="job-description">Paint interior walls for residential renovation. Must have experience with interior painting.</p>
+                    <div class="job-rating">⭐⭐⭐⭐⭐ (5 reviews)</div>
+                    <button class="btn btn-apply" data-modal-trigger>Apply Now</button>
+                </div>
+            </article>
+
+            <!-- Cleaning Job 3 -->
+            <article class="card job-card fade-in" data-category="cleaning">
+                <img src="images/vitaly-gariev-2NcTLdFHpH8-unsplash.jpg" alt="Window cleaning service" class="card-image">
+                <div class="card-content">
+                    <h3>🪟 Window Cleaning</h3>
+                    <p class="job-details">📍 Northside • ⏱️ 2.5 hours • 💰 KES 3,500 flat</p>
+                    <p class="job-description">Professional window cleaning for office building. Access to cleaning equipment required.</p>
+                    <div class="job-rating">⭐⭐⭐⭐⭐ (18 reviews)</div>
+                    <button class="btn btn-apply" data-modal-trigger>Apply Now</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works fade-in">
+        <h2 class="section-title">How to Get Started</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-icon">🔍</span>
+                <h3>Browse Jobs</h3>
+                <p>Find jobs that match your skills and availability from local customers.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-icon">✅</span>
+                <h3>Apply & Get Hired</h3>
+                <p>Submit your profile and get hired for the best matching opportunities.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-icon">💬</span>
+                <h3>Communicate</h3>
+                <p>Message customers directly to clarify details and confirm the job.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-icon">💰</span>
+                <h3>Get Paid</h3>
+                <p>Complete the job and get paid securely through our platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories fade-in">
+        <h2 class="section-title">Job Categories</h2>
+        <div class="cards-grid">
+            <div class="category-card">
+                <span class="cat-icon">🧹</span>
+                <h3>Cleaning</h3>
+                <p>House, office, and specialized cleaning services</p>
+            </div>
+            <div class="category-card">
+                <span class="cat-icon">🌱</span>
+                <h3>Gardening</h3>
+                <p>Lawn care, landscaping and garden maintenance</p>
+            </div>
+            <div class="category-card">
+                <span class="cat-icon">🔧</span>
+                <h3>Handyman</h3>
+                <p>Repairs, installation and home improvement</p>
+            </div>
+            <div class="category-card">
+                <span class="cat-icon">📦</span>
+                <h3>Moving</h3>
+                <p>Moving assistance and hauling services</p>
+            </div>
+            <div class="category-card">
+                <span class="cat-icon">📚</span>
+                <h3>Tutoring</h3>
+                <p>Educational support and learning services</p>
+            </div>
+            <div class="category-card">
+                <span class="cat-icon">🐕</span>
+                <h3>Pet Care</h3>
+                <p>Pet sitting, dog walking and care</p>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <!-- Job Application Modal -->
+  <div id="job-modal" class="modal" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="close-modal" aria-label="Close modal">&times;</button>
+      <h2 id="modal-title">Apply for This Job</h2>
+      <form id="job-application-form">
+        <div class="form-group">
+          <label for="applicant-name">Full Name *</label>
+          <input id="applicant-name" name="name" type="text" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="applicant-email">Email *</label>
+          <input id="applicant-email" name="email" type="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="applicant-phone">Phone *</label>
+          <input id="applicant-phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" required />
+        </div>
+        <div class="form-group">
+          <label for="applicant-message">Cover Message *</label>
+          <textarea id="applicant-message" name="message" rows="4" placeholder="Tell the customer why you're the right person for this job..." required></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Submit Application</button>
+          <button class="btn btn-secondary" type="button" data-close-modal>Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <nav class="footer-nav">
+        <a href="https://www.facebook.com/joddy" class="social-link facebook" aria-label="Facebook"></a>
+        <a href="https://www.twitter.com/joddy" class="social-link twitter" aria-label="Twitter"></a>
+        <a href="https://www.instagram.com/joddy" class="social-link instagram" aria-label="Instagram"></a>
+        <a href="https://www.pinterest.com/joddy" class="social-link pinterest" aria-label="Pinterest"></a>
+    </nav>
+    <p>&copy; 2026 JODDY. All rights reserved.</p>
+    <p>Connecting communities through trusted local services.</p>
+</footer>
+
+<script src="joddy-enhanced.js"></script>
+</body>
+</html>

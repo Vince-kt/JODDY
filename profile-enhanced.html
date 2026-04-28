@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - JODDY</title>
+    <link rel="stylesheet" href="style-enhanced.css">
+    <link rel="stylesheet" href="style-enhanced-additional.css">
+    <meta name="description" content="JODDY - Manage your profile. Update your skills, location, and avatar to find matching jobs and opportunities.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧹</text></svg>">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+    <div class="header-container">
+        <a href="homepage-enhanced.html" class="logo">
+            <span class="logo-icon">🧹</span>
+            <div class="logo-text">
+                <h1>JODDY</h1>
+                <span class="tagline">Local Help, Earn Money</span>
+            </div>
+        </a>
+        <nav class="header-nav">
+            <a href="homepage-enhanced.html">Home</a>
+            <a href="profile-enhanced.html" class="active">Profile</a>
+            <a href="jobs-enhanced.html">Jobs</a>
+            <a href="contact-enhanced.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn" aria-label="Search">🔍</button>
+            <button class="icon-btn" aria-label="Notifications">🔔</button>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+            <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+        <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
+        <a href="homepage-enhanced.html">Home</a>
+        <a href="profile-enhanced.html">Profile</a>
+        <a href="jobs-enhanced.html">Jobs</a>
+        <a href="contact-enhanced.html">Contact</a>
+    </nav>
+</header>
+
+<main id="main" class="container profile-page">
+    <!-- Hero Section -->
+    <section class="profile-hero fade-in">
+        <h2>👤 Your Profile</h2>
+        <p>Build your professional profile to connect with opportunities</p>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="profile-content fade-in">
+        <div class="two-col">
+            <!-- Preview Section -->
+            <section class="profile-preview-section card">
+                <h3>📋 Current Profile</h3>
+                <div class="preview-container">
+                    <img class="current-avatar" src="images/vitaly-gariev-2NcTLdFHpH8-unsplash.jpg" alt="Current profile picture" />
+                    <div class="preview-details">
+                        <p><strong>Name:</strong> <span id="preview-name">John Doe</span></p>
+                        <p><strong>Location:</strong> <span id="preview-location">Nairobi, Kenya</span></p>
+                        <p><strong>Role:</strong> <span id="preview-role">Looking for work</span></p>
+                        <p><strong>Bio:</strong> <span id="preview-bio">Experienced web developer...</span></p>
+                    </div>
+                </div>
+                <div class="preview-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4.8</span>
+                        <span class="stat-label">⭐ Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">✅ Jobs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">👍 Reviews</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Edit Section -->
+            <section class="profile-edit-section card">
+                <h2>✏️ Edit Profile</h2>
+                <p class="section-subtitle">Update your details below to improve your visibility</p>
+                
+                <form id="profile-form" class="profile-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input id="name" name="name" type="text" placeholder="e.g., John Doe" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input id="email" name="email" type="email" placeholder="john@example.com" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <input id="location" name="location" type="text" placeholder="Nairobi, Kenya" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>I am *</label>
+                        <div class="role-inputs">
+                            <label class="radio-label">
+                                <input type="radio" name="role" value="worker" checked /> 
+                                Looking for work
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="role" value="customer" /> 
+                                Looking for workers
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avatar">Profile Picture</label>
+                        <div class="avatar-upload">
+                            <input id="avatar" name="avatar" type="file" accept="image/*" />
+                            <p class="upload-hint">JPG, PNG up to 5MB</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="skills">Skills & Bio *</label>
+                        <textarea id="skills" name="skills" rows="6" placeholder="Tell us about your experience, skills, and what you're looking for..." required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">💾 Save Profile</button>
+                        <button class="btn btn-secondary" type="reset">↻ Reset</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section fade-in card">
+        <h3>🏆 Your Skills</h3>
+        <div class="skills-container">
+            <div class="skill-tag">Web Development</div>
+            <div class="skill-tag">HTML/CSS/JS</div>
+            <div class="skill-tag">Cleaning</div>
+            <div class="skill-tag">Handyman</div>
+        </div>
+        <p class="section-subtitle">Skills help clients find you faster</p>
+    </section>
+
+    <!-- Recent Activity Section -->
+    <section class="activity-section fade-in card">
+        <h3>📊 Your Activity</h3>
+        <div class="activity-list">
+            <div class="activity-item">
+                <span class="activity-badge success">✓</span>
+                <div class="activity-details">
+                    <p class="activity-title">Completed cleaning job</p>
+                    <p class="activity-time">2 days ago</p>
+                </div>
+            </div>
+            <div class="activity-item">
+                <span class="activity-badge">⭐</span>
+                <div class="activity-details">
+                    <p class="activity-title">Got 5-star review from Sarah M.</p>
+                    <p class="activity-time">1 week ago</p>
+                </div>
+            </div>
+            <div class="activity-item">
+                <span class="activity-badge">📝</span>
+                <div class="activity-details">
+                    <p class="activity-title">Applied for 3 jobs</p>
+                    <p class="activity-time">2 weeks ago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="help-section fade-in">
+        <h3>❓ Need Help?</h3>
+        <p>Having trouble updating your profile? <a href="contact-enhanced.html" class="link">Contact our support team</a> or check our <a href="#" class="link">FAQ</a>.</p>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <h4>JODDY</h4>
+                <p>Connecting people with opportunities</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="homepage-enhanced.html">Home</a></li>
+                    <li><a href="jobs-enhanced.html">Browse Jobs</a></li>
+                    <li><a href="profile-enhanced.html">Profile</a></li>
+                    <li><a href="contact-enhanced.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <nav class="footer-nav">
+                    <a href="https://www.facebook.com/joddy" aria-label="Facebook">f</a>
+                    <a href="https://www.x.com/joddy" aria-label="Twitter">𝕏</a>
+                    <a href="https://www.instagram.com/joddy" aria-label="Instagram">📷</a>
+                    <a href="https://www.pinterest.com/joddy" aria-label="Pinterest">📌</a>
+                </nav>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <p>support@joddy.example</p>
+                <p>+1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 JODDY. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </div>
+</footer>
+
+<script src="joddy-enhanced.js"></script>
+</body>
+</html>
