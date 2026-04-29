@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - JODDY</title>
+    <link rel="stylesheet" href="style-enhanced.css">
+    <meta name="description" content="Post a job on JODDY - Find local help for cleaning, gardening, handyman services and more.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧹</text></svg>">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Role Toggle Banner -->
+<div class="role-toggle-banner" id="roleBanner">
+    <div class="role-toggle-container">
+        <div class="current-role">
+            <span class="role-badge" id="currentRoleBadge">👔</span>
+            <span id="currentRoleText">Current Mode: <strong>Employer</strong></span>
+        </div>
+        <button class="switch-role-btn" id="switchRoleBtn" onclick="toggleUserRole()">
+            🔄 Switch to <span id="switchToText">Provider</span> Mode
+        </button>
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🧹</span>
+            <div class="logo-text">
+                <h1>JODDY</h1>
+                <span class="tagline">Local Help, Earn Money</span>
+            </div>
+        </a>
+        <nav class="header-nav" id="mainNav">
+            <a href="index.html" class="nav-employer">Home</a>
+            <a href="post-job.html" class="nav-employer active">Post a Job</a>
+            <a href="dashboard.html" class="nav-employer">Dashboard</a>
+            <a href="profile-enhanced.html">Profile</a>
+            <a href="contact-enhanced.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn" aria-label="Search">🔍</button>
+            <button class="icon-btn" aria-label="Notifications">🔔</button>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+            <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+        <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
+        <a href="index.html">Home</a>
+        <a href="post-job.html">Post Job</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profile-enhanced.html">Profile</a>
+        <a href="contact-enhanced.html">Contact</a>
+    </nav>
+</header>
+
+<main id="main" class="container" style="padding-top: 2rem;">
+    <section class="fade-in">
+        <div class="profile-hero" style="background-image: linear-gradient(rgba(6,83,29,0.9), rgba(6,83,29,0.9)), url('images/cdc-jjrXvzbqC5E-unsplash.jpg');">
+            <h2>📝 Post a New Job</h2>
+            <p>Describe your job and connect with qualified local providers</p>
+        </div>
+    </section>
+
+    <section class="profile-content fade-in" style="max-width: 800px; margin: 2rem auto;">
+        <form id="jobPostForm" class="profile-form card">
+            <div class="form-group full-width">
+                <label for="job-title">Job Title *</label>
+                <input id="job-title" type="text" placeholder="e.g., House Cleaning - 3 Bedrooms" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" required>
+                        <option value="">Select category</option>
+                        <option>🧹 Cleaning</option>
+                        <option>🌱 Gardening</option>
+                        <option>🔧 Handyman</option>
+                        <option>📦 Moving</option>
+                        <option>👨‍🍳 Cooking</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget (KSh) *</label>
+                    <input id="budget" type="number" min="500" placeholder="5000" required>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="location">Location *</label>
+                <input id="location" type="text" placeholder="Nairobi, Westlands" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input id="date" type="date">
+                </div>
+                <div class="form-group">
+                    <label for="time">Preferred Time</label>
+                    <input id="time" type="time">
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="description">Job Description *</label>
+                <textarea id="description" rows="6" placeholder="Describe the job in detail..." required></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">🚀 Post Job Now</button>
+                <button class="btn btn-secondary" type="button" onclick="showToast('Draft saved!', 'info')">💾 Save Draft</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2026 JODDY. All rights reserved.</p>
+</footer>
+
+<script src="joddy-enhanced.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        showToast('Fill out the form to post your job!', 'info');
+        const form = document.getElementById('jobPostForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Job posted successfully! Providers will see it soon.', 'success');
+        });
+    });
+</script>
+</body>
+</html>

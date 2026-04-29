@@ -19,8 +19,6 @@
 
 html { scroll-behavior: smooth; }
 
-html { scroll-behavior: smooth; }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -297,7 +295,6 @@ header {
 .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 
 .card:focus-within { outline: 3px solid var(--secondary); outline-offset: 2px; }
-}
 
 .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 
@@ -1407,5 +1404,354 @@ select {
   .scroll-to-top {
     transition: none !important;
   }
+}
+
+/* ========================================
+   ROLE-BASED STYLING
+   Employer (Green) vs Provider (Blue)
+   ======================================== */
+
+.role-toggle-banner {
+    background: linear-gradient(135deg, #06531d 0%, #0a6b2a 100%);
+    padding: 0.75rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.role-toggle-banner.provider-mode {
+    background: linear-gradient(135deg, #1a5fa0 0%, #2563eb 100%);
+}
+
+.role-toggle-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.current-role {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+}
+
+.role-badge {
+    font-size: 1.5rem;
+    background: rgba(255,255,255,0.2);
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+}
+
+#currentRoleText {
+    font-size: 0.95rem;
+}
+
+#currentRoleText strong {
+    color: #7cff81;
+}
+
+.switch-role-btn {
+    background: #7cff81;
+    color: #06531d;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.switch-role-btn:hover {
+    background: #5fd66b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(124, 255, 129, 0.4);
+}
+
+.provider-mode .switch-role-btn {
+    background: #64b5f6;
+    color: #1a5fa0;
+}
+
+.provider-mode .switch-role-btn:hover {
+    background: #42a5f5;
+}
+
+/* Employer Theme */
+.employer-btn {
+    background: #06531d !important;
+}
+
+.dash-stat-card.employer {
+    border-bottom: 3px solid #06531d;
+}
+
+/* Provider Theme */
+.provider-btn {
+    background: #1a5fa0 !important;
+}
+
+.dash-stat-card.provider {
+    border-bottom: 3px solid #1a5fa0;
+}
+
+/* Hidden utility class */
+.hidden {
+    display: none !important;
+}
+
+/* Profile sections */
+.profile-section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.verification-badge {
+    background: #d1fae5;
+    color: #06531d;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.skill-tag {
+    background: #e0f2fe;
+    color: #1a5fa0;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+}
+
+.earnings-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.earnings-stat {
+    text-align: center;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 12px;
+}
+
+.earnings-stat .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a5fa0;
+}
+
+/* Dashboard sections */
+.dashboard-section {
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.dashboard-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.value-prop {
+    font-style: italic;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+#employerDashboard .dashboard-header h2 {
+    color: #06531d;
+}
+
+#employerDashboard .value-prop {
+    color: #06531d;
+}
+
+#providerDashboard .dashboard-header h2 {
+    color: #1a5fa0;
+}
+
+#providerDashboard .value-prop {
+    color: #1a5fa0;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.dash-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.dash-stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.dash-stat-icon {
+    font-size: 2.5rem;
+}
+
+.dash-stat-number {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.dash-stat-label {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.dash-action-btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.dash-action-btn.primary {
+    background: #06531d;
+    color: white;
+}
+
+.dash-action-btn.secondary {
+    background: transparent;
+    border: 2px solid #06531d;
+    color: #06531d;
+}
+
+.dash-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.provider-mode .dash-action-btn.primary {
+    background: #1a5fa0;
+}
+
+.provider-mode .dash-action-btn.secondary {
+    border-color: #1a5fa0;
+    color: #1a5fa0;
+}
+
+/* Activity items */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.activity-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.activity-status.active {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.activity-status.pending {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.activity-status.completed {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.activity-title {
+    flex: 1;
+    font-weight: 500;
+}
+
+.activity-meta {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Provider job feed */
+.provider-job {
+    justify-content: space-between;
+}
+
+.job-pay {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a5fa0;
+}
+
+.job-details {
+    flex: 1;
+    padding: 0 1rem;
+}
+
+.btn-apply {
+    padding: 0.5rem 1.5rem;
+    background: #1a5fa0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-apply:hover {
+    background: #1565c0;
 }
 

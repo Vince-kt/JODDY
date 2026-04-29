@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Listings - JODDY</title>
+    <link rel="stylesheet" href="style-enhanced.css">
+    <meta name="description" content="Manage your job listings on JODDY. View active jobs, applicants, and past hires.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧹</text></svg>">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Role Toggle Banner -->
+<div class="role-toggle-banner" id="roleBanner">
+    <div class="role-toggle-container">
+        <div class="current-role">
+            <span class="role-badge" id="currentRoleBadge">👔</span>
+            <span id="currentRoleText">Current Mode: <strong>Employer</strong></span>
+        </div>
+        <button class="switch-role-btn" id="switchRoleBtn" onclick="toggleUserRole()">
+            🔄 Switch to <span id="switchToText">Provider</span> Mode
+        </button>
+    </div>
+</header>
+
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🧹</span>
+            <div class="logo-text">
+                <h1>JODDY</h1>
+                <span class="tagline">Local Help, Earn Money</span>
+            </div>
+        </a>
+        <nav class="header-nav" id="mainNav">
+            <a href="index.html" class="nav-employer">Home</a>
+            <a href="post-job.html" class="nav-employer">Post a Job</a>
+            <a href="my-listings.html" class="nav-employer active">My Listings</a>
+            <a href="dashboard.html" class="nav-employer">Dashboard</a>
+            <a href="profile-enhanced.html">Profile</a>
+            <a href="contact-enhanced.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn" aria-label="Search">🔍</button>
+            <button class="icon-btn" aria-label="Notifications">🔔</button>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+            <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+        <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
+        <a href="index.html">Home</a>
+        <a href="post-job.html">Post Job</a>
+        <a href="my-listings.html">Listings</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profile-enhanced.html">Profile</a>
+    </nav>
+</header>
+
+<main id="main" class="container" style="padding-top: 2rem;">
+    <section class="fade-in">
+        <div class="profile-hero" style="background-image: linear-gradient(rgba(6,83,29,0.9), rgba(6,83,29,0.9)), url('images/cdc-jjrXvzbqC5E-unsplash.jpg');">
+            <h2>📋 My Job Listings</h2>
+            <p>Manage your active jobs and review applicants</p>
+        </div>
+    </section>
+
+    <section class="profile-content fade-in">
+        <div class="dashboard-stats" style="justify-content: center; margin: 2rem 0;">
+            <div class="dash-stat-card employer">
+                <span class="dash-stat-icon">📋</span>
+                <div>
+                    <span class="dash-stat-number">3</span>
+                    <span class="dash-stat-label">Active Jobs</span>
+                </div>
+            </div>
+            <div class="dash-stat-card employer">
+                <span class="dash-stat-icon">📨</span>
+                <div>
+                    <span class="dash-stat-number">7</span>
+                    <span class="dash-stat-label">New Applicants</span>
+                </div>
+            </div>
+            <div class="dash-stat-card employer">
+                <span class="dash-stat-icon">⭐</span>
+                <div>
+                    <span class="dash-stat-number">4.9</span>
+                    <span class="dash-stat-label">Avg Rating</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Active Job 1 -->
+            <article class="card">
+                <div class="card-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4>🧹 House Cleaning - Westlands</h4>
+                        <span class="activity-status active">Active</span>
+                    </div>
+                    <p class="job-description">3 bedroom deep clean, weekly service</p>
+                    <div style="display: flex; gap: 1rem; margin: 1rem 0;">
+                        <span>💰 KSh 5,000</span>
+                        <span>📍 Westlands</span>
+                        <span>👥 2 applicants</span>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn" onclick="showToast('Viewing applicants...', 'info')">👀 View Applicants</button>
+                        <button class="btn btn-secondary" onclick="showToast('Job edited', 'success')">✏️ Edit</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Active Job 2 -->
+            <article class="card">
+                <div class="card-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4>🌱 Garden Maintenance - Karen</h4>
+                        <span class="activity-status pending">Pending Review</span>
+                    </div>
+                    <p class="job-description">Lawn mowing and hedge trimming</p>
+                    <div style="display: flex; gap: 1rem; margin: 1rem 0;">
+                        <span>💰 KSh 3,500</span>
+                        <span>📍 Karen</span>
+                        <span>👥 1 applicant</span>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn" onclick="showToast('Hired Jane W.!', 'success')">✅ Hired</button>
+                        <button class="btn btn-secondary">📝 Review</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Past Job -->
+            <article class="card">
+                <div class="card-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4>🔧 Handyman - CBD Office</h4>
+                        <span class="activity-status completed">Completed</span>
+                    </div>
+                    <p class="job-description">Shelf installation and minor repairs</p>
+                    <div style="display: flex; gap: 1rem; margin: 1rem 0;">
+                        <span>💰 KSh 2,000</span>
+                        <span>📍 CBD</span>
+                        <span>⭐ 5.0 rating</span>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" onclick="showToast('Repost similar job?', 'info')">🔄 Repost</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="post-job.html" class="btn btn-large">➕ Post Another Job</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2026 JODDY. All rights reserved.</p>
+</footer>
+
+<script src="joddy-enhanced.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        showToast('Manage your active job listings below', 'info');
+    });
+</script>
+</body>
+</html>

@@ -12,6 +12,19 @@
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
 
+<!-- Role Toggle Banner -->
+<div class="role-toggle-banner" id="roleBanner">
+    <div class="role-toggle-container">
+        <div class="current-role">
+            <span class="role-badge" id="currentRoleBadge">👔</span>
+            <span id="currentRoleText">Current Mode: <strong>Employer</strong></span>
+        </div>
+        <button class="switch-role-btn" id="switchRoleBtn" onclick="toggleUserRole()">
+            🔄 Switch to <span id="switchToText">Provider</span> Mode
+        </button>
+    </div>
+</div>
+
 <header class="site-header">
     <div class="header-container">
         <a href="index.html" class="logo">
@@ -21,10 +34,17 @@
                 <span class="tagline">Local Help, Earn Money</span>
             </div>
         </a>
-        <nav class="header-nav">
-            <a href="index.html">Home</a>
+        <nav class="header-nav" id="mainNav">
+            <!-- Employer Links -->
+            <a href="index.html" class="nav-employer">Home</a>
+            <a href="post-job.html" class="nav-employer">Post a Job</a>
+            <a href="my-listings.html" class="nav-employer">My Listings</a>
+            <!-- Provider Links (hidden by default) -->
+            <a href="index.html" class="nav-provider" style="display:none;">Home</a>
+            <a href="jobs-enhanced.html" class="nav-provider" style="display:none;">Browse Tasks</a>
+            <a href="my-earnings.html" class="nav-provider" style="display:none;">My Earnings</a>
+            <!-- Common Links -->
             <a href="profile-enhanced.html" class="active">Profile</a>
-            <a href="jobs-enhanced.html">Jobs</a>
             <a href="contact-enhanced.html">Contact</a>
         </nav>
         <div class="header-actions">
@@ -40,7 +60,7 @@
     </div>
     <nav class="mobile-menu" id="mobile-menu">
         <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
-        <a href="homepage-enhanced.html">Home</a>
+        <a href="index.html">Home</a>
         <a href="profile-enhanced.html">Profile</a>
         <a href="jobs-enhanced.html">Jobs</a>
         <a href="contact-enhanced.html">Contact</a>
@@ -85,12 +105,13 @@
                 </div>
             </section>
 
-            <!-- Edit Section -->
+    <!-- Edit Section -->
             <section class="profile-edit-section card">
                 <h2>✏️ Edit Profile</h2>
                 <p class="section-subtitle">Update your details below to improve your visibility</p>
                 
                 <form id="profile-form" class="profile-form">
+                    <!-- Common Fields -->
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input id="name" name="name" type="text" placeholder="e.g., John Doe" required />
@@ -107,17 +128,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>I am *</label>
-                        <div class="role-inputs">
-                            <label class="radio-label">
-                                <input type="radio" name="role" value="worker" checked /> 
-                                Looking for work
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="role" value="customer" /> 
-                                Looking for workers
-                            </label>
-                        </div>
+                        <label for="phone">Phone Number *</label>
+                        <input id="phone" name="phone" type="tel" placeholder="+254 712 345 678" required />
                     </div>
 
                     <div class="form-group">
@@ -128,9 +140,59 @@
                         </div>
                     </div>
 
-                    <div class="form-group full-width">
-                        <label for="skills">Skills & Bio *</label>
-                        <textarea id="skills" name="skills" rows="6" placeholder="Tell us about your experience, skills, and what you're looking for..." required></textarea>
+                    <!-- EMPLOYER-SPECIFIC FIELDS -->
+                    <div class="form-group full-width employer-field" id="employerProfile">
+                        <h4 style="color:#06531d; margin:1rem 0 0.5rem;">🏢 Employer Information</h4>
+                    </div>
+                    <div class="form-group employer-field" id="employerCompany">
+                        <label for="company-name">Company Name</label>
+                        <input id="company-name" name="company_name" type="text" placeholder="Acme Corp (optional)" />
+                    </div>
+                    <div class="form-group employer-field" id="employerIndustry">
+                        <label for="industry">Industry</label>
+                        <select id="industry" name="industry">
+                            <option value="">-- Select Industry --</option>
+                            <option value="home">Home & Residential</option>
+                            <option value="business">Small Business</option>
+                            <option value="events">Events & Hospitality</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width employer-field" id="employerVerification">
+                        <label>🛡️ Verification Status</label>
+                        <div style="padding:0.75rem; background:#e8f5e9; border-radius:8px; color:#2e7d32;">
+                            ✅ Identity Verified &nbsp;|&nbsp; ✅ Phone Verified &nbsp;|&nbsp; ⏳ Business Pending
+                        </div>
+                        <p style="font-size:0.85rem; margin-top:0.5rem;">Complete business verification for priority posting.</p>
+                    </div>
+
+                    <!-- PROVIDER-SPECIFIC FIELDS -->
+                    <div class="form-group full-width provider-field hidden" id="providerProfile">
+                        <h4 style="color:#1a5fa0; margin:1rem 0 0.5rem;">🔧 Provider Information</h4>
+                    </div>
+                    <div class="form-group provider-field hidden" id="providerRate">
+                        <label for="hourly-rate">Default Hourly Rate (KSh)</label>
+                        <input id="hourly-rate" name="hourly_rate" type="number" min="100" step="50" value="500" />
+                    </div>
+                    <div class="form-group provider-field hidden" id="providerTransport">
+                        <label>
+                            <input type="checkbox" name="transport_available" checked />
+                            🚗 I have my own transport
+                        </label>
+                    </div>
+                    <div class="form-group full-width provider-field hidden" id="providerSkills">
+                        <label for="skills-input">Skills & Equipment</label>
+                        <div class="skills-grid" style="margin-bottom:0.5rem;">
+                            <div class="skill-tag">🧹 Professional Cleaning</div>
+                            <div class="skill-tag">🌿 Gardening</div>
+                            <div class="skill-tag">🔧 Basic Repairs</div>
+                            <div class="skill-tag">🚗 Own Transport</div>
+                        </div>
+                        <input type="text" placeholder="Add a skill and press Enter..." style="width:100%; padding:0.5rem;" />
+                    </div>
+                    <div class="form-group full-width provider-field hidden" id="providerBio">
+                        <label for="provider-bio">Professional Bio</label>
+                        <textarea id="provider-bio" name="bio" rows="4" placeholder="Describe your experience, specialties, and why clients should hire you..."></textarea>
                     </div>
 
                     <div class="form-actions">
@@ -142,40 +204,73 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section fade-in card">
-        <h3>🏆 Your Skills</h3>
-        <div class="skills-container">
-            <div class="skill-tag">Web Development</div>
-            <div class="skill-tag">HTML/CSS/JS</div>
-            <div class="skill-tag">Cleaning</div>
-            <div class="skill-tag">Handyman</div>
+    <!-- EMPLOYER: Job History Section -->
+    <section class="profile-section fade-in" id="employerJobHistory">
+        <h3>📋 Job Posting History</h3>
+        <div class="activity-list">
+            <div class="activity-item">
+                <span class="activity-status completed">Completed</span>
+                <div class="activity-details" style="flex:1;">
+                    <p class="activity-title">House Cleaning - 3 Bedrooms</p>
+                    <p class="activity-time">Posted: Mar 15, 2026 | Budget: KSh 5,000</p>
+                </div>
+                <span>⭐ 5.0</span>
+            </div>
+            <div class="activity-item">
+                <span class="activity-status active">Active</span>
+                <div class="activity-details" style="flex:1;">
+                    <p class="activity-title">Garden Maintenance - Weekly</p>
+                    <p class="activity-time">Posted: Apr 1, 2026 | Budget: KSh 8,000/mo</p>
+                </div>
+                <span>2 applicants</span>
+            </div>
+            <div class="activity-item">
+                <span class="activity-status pending">Pending</span>
+                <div class="activity-details" style="flex:1;">
+                    <p class="activity-title">Office Deep Clean</p>
+                    <p class="activity-time">Posted: Apr 20, 2026 | Budget: KSh 12,000</p>
+                </div>
+                <span>0 applicants</span>
+            </div>
         </div>
-        <p class="section-subtitle">Skills help clients find you faster</p>
     </section>
 
-    <!-- Recent Activity Section -->
-    <section class="activity-section fade-in card">
-        <h3>📊 Your Activity</h3>
+    <!-- PROVIDER: Skills Showcase (hidden by default) -->
+    <section class="skills-section fade-in card hidden" id="providerSkillsSection">
+        <h3>🏆 Your Skills & Equipment</h3>
+        <div class="skills-container">
+            <div class="skill-tag">🧹 Professional Cleaning</div>
+            <div class="skill-tag">🌿 Gardening</div>
+            <div class="skill-tag">🔧 Basic Repairs</div>
+            <div class="skill-tag">🚗 Own Transport</div>
+            <div class="skill-tag">🏠 Move-in/Move-out</div>
+        </div>
+        <p class="section-subtitle">Skills and equipment help employers find you faster</p>
+    </section>
+
+    <!-- PROVIDER: Recent Work (hidden by default) -->
+    <section class="activity-section fade-in card hidden" id="providerActivity">
+        <h3>📊 Recent Work & Reviews</h3>
         <div class="activity-list">
             <div class="activity-item">
                 <span class="activity-badge success">✓</span>
                 <div class="activity-details">
-                    <p class="activity-title">Completed cleaning job</p>
-                    <p class="activity-time">2 days ago</p>
+                    <p class="activity-title">Completed office cleaning for Acme Corp</p>
+                    <p class="activity-time">2 days ago | Earned: KSh 5,000</p>
                 </div>
+                <span>⭐ 5.0</span>
             </div>
             <div class="activity-item">
                 <span class="activity-badge">⭐</span>
                 <div class="activity-details">
-                    <p class="activity-title">Got 5-star review from Sarah M.</p>
+                    <p class="activity-title">Got 5-star review from Jane W.</p>
                     <p class="activity-time">1 week ago</p>
                 </div>
             </div>
             <div class="activity-item">
                 <span class="activity-badge">📝</span>
                 <div class="activity-details">
-                    <p class="activity-title">Applied for 3 jobs</p>
+                    <p class="activity-title">Applied for 3 new jobs</p>
                     <p class="activity-time">2 weeks ago</p>
                 </div>
             </div>
@@ -199,7 +294,7 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="homepage-enhanced.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="jobs-enhanced.html">Browse Jobs</a></li>
                     <li><a href="profile-enhanced.html">Profile</a></li>
                     <li><a href="contact-enhanced.html">Contact</a></li>

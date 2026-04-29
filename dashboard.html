@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - JODDY</title>
+    <link rel="stylesheet" href="style-enhanced.css">
+    <link rel="stylesheet" href="role-dashboard.css">
+    <meta name="description" content="JODDY - Your personalized dashboard. Manage jobs as an Employer or discover work as a Provider.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧹</text></svg>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Role Toggle Banner -->
+<div class="role-toggle-banner" id="roleBanner">
+    <div class="role-toggle-container">
+        <div class="current-role">
+            <span class="role-badge" id="currentRoleBadge">👔</span>
+            <span id="currentRoleText">Current Mode: <strong>Employer</strong></span>
+        </div>
+        <button class="switch-role-btn" id="switchRoleBtn" onclick="toggleUserRole()">
+            🔄 Switch to <span id="switchToText">Provider</span> Mode
+        </button>
+    </div>
+
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🧹</span>
+            <div class="logo-text">
+                <h1>JODDY</h1>
+                <span class="tagline">Local Help, Earn Money</span>
+            </div>
+        </a>
+        <nav class="header-nav" id="mainNav">
+            <!-- Employer Links -->
+            <a href="index.html" class="nav-employer">Home</a>
+            <a href="post-job.html" class="nav-employer">Post a Job</a>
+            <a href="my-listings.html" class="nav-employer">My Listings</a>
+            <!-- Provider Links (hidden by default) -->
+            <a href="index.html" class="nav-provider" style="display:none;">Home</a>
+            <a href="jobs-enhanced.html" class="nav-provider" style="display:none;">Browse Tasks</a>
+            <a href="my-earnings.html" class="nav-provider" style="display:none;">My Earnings</a>
+            <!-- Common Links -->
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="profile-enhanced.html">Profile</a>
+            <a href="contact-enhanced.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn" aria-label="Search">🔍</button>
+            <button class="icon-btn" aria-label="Notifications">🔔</button>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+            <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    <nav class="mobile-menu" id="mobile-menu">
+        <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profile-enhanced.html">Profile</a>
+        <a href="jobs-enhanced.html">Jobs</a>
+        <a href="contact-enhanced.html">Contact</a>
+    </nav>
+</header>
+
+<main id="main" class="container profile-page">
+
+    <!-- ==========================================
+         EMPLOYER DASHBOARD - Management Focused
+         ========================================== -->
+    <section class="dashboard-section fade-in" id="employerDashboard">
+        <div class="dashboard-header">
+            <h2>👔 Employer Dashboard</h2>
+            <p class="value-prop">"Simplicity" — Manage your jobs and hire the best local help</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="dashboard-stats">
+            <div class="dash-stat-card employer">
+                <span class="dash-stat-icon">📋</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">3</span>
+                    <span class="dash-stat-label">Active Listings</span>
+                </div>
+            <div class="dash-stat-card employer">
+                <span class="dash-stat-icon">👷</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">12</span>
+                    <span class="dash-stat-label">Providers Hired</span>
+                </div>
+            <div class="dash-stat-card employer">
+                <span class="dash-stat-icon">💳</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">KSh 156K</span>
+                    <span class="dash-stat-label">Total Spent</span>
+                </div>
+            <div class="dash-stat-card employer">
+                <span class="dash-stat-icon">✅</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">Verified</span>
+                    <span class="dash-stat-label">Account Status</span>
+                </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-actions">
+            <button class="dash-action-btn primary" onclick="showToast('Opening job creation wizard...', 'info')">
+                ➕ Post a New Job
+            </button>
+            <button class="dash-action-btn secondary" onclick="showToast('Opening provider directory...', 'info')">
+                🔍 Discover Providers
+            </button>
+            <button class="dash-action-btn secondary" onclick="showToast('Opening analytics...', 'info')">
+                📊 View Analytics
+            </button>
+        </div>
+
+        <!-- Job Listings Table -->
+        <div class="recent-activity">
+            <h3>📝 Your Job Listings</h3>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <span class="activity-status active">Active</span>
+                    <span class="activity-title">House Cleaning - 3 Bedrooms</span>
+                    <span class="activity-meta">KSh 5,000 | 2 applicants</span>
+                    <button class="btn-apply" style="background:#06531d;">Manage</button>
+                </div>
+                <div class="activity-item">
+                    <span class="activity-status pending">Pending</span>
+                    <span class="activity-title">Lawn Mowing - Front Yard</span>
+                    <span class="activity-meta">KSh 2,500 | 0 applicants</span>
+                    <button class="btn-apply" style="background:#06531d;">Manage</button>
+                </div>
+                <div class="activity-item">
+                    <span class="activity-status completed">Completed</span>
+                    <span class="activity-title">Kitchen Deep Clean</span>
+                    <span class="activity-meta">KSh 8,000 | ⭐ 5.0</span>
+                    <button class="btn-apply" style="background:#666;">Review</button>
+                </div>
+        </div>
+
+        <!-- Verification & Trust -->
+        <div class="profile-section" id="employerProfile">
+            <h3>🛡️ Verification & Trust</h3>
+            <div class="verification-badge">✅ Identity Verified</div>
+            <div class="verification-badge">✅ Phone Verified</div>
+            <div class="verification-badge" style="background:#fff3e0;color:#f57c00;">⏳ Business Verification Pending</div>
+            <p style="margin-top:1rem;">Complete verification to unlock priority posting and featured listings.</p>
+        </div>
+
+        <!-- Recent Hires -->
+        <div class="profile-section">
+            <h3>👷 Recent Hires</h3>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <span class="activity-badge">👤</span>
+                    <div class="activity-details">
+                        <p class="activity-title">Jane W. - Cleaner</p>
+                        <p class="activity-time">⭐ 4.9 | 15 jobs completed</p>
+                    </div>
+                <div class="activity-item">
+                    <span class="activity-badge">👤</span>
+                    <div class="activity-details">
+                        <p class="activity-title">Peter K. - Handyman</p>
+                        <p class="activity-time">⭐ 4.7 | 8 jobs completed</p>
+                    </div>
+            </div>
+    </section>
+
+    <!-- ==========================================
+         PROVIDER DASHBOARD - Job Feed Discovery
+         ========================================== -->
+    <section class="dashboard-section fade-in hidden" id="providerDashboard">
+        <div class="dashboard-header">
+            <h2>🔧 Provider Dashboard</h2>
+            <p class="value-prop">"Reliability" — Discover jobs and grow your earnings</p>
+        </div>
+
+        <!-- Earnings Stats -->
+        <div class="dashboard-stats">
+            <div class="dash-stat-card provider">
+                <span class="dash-stat-icon">💰</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">KSh 45,000</span>
+                    <span class="dash-stat-label">Total Earnings</span>
+                </div>
+            <div class="dash-stat-card provider">
+                <span class="dash-stat-icon">⭐</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">4.8</span>
+                    <span class="dash-stat-label">Average Rating</span>
+                </div>
+            <div class="dash-stat-card provider">
+                <span class="dash-stat-icon">💼</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">28</span>
+                    <span class="dash-stat-label">Jobs Completed</span>
+                </div>
+            <div class="dash-stat-card provider">
+                <span class="dash-stat-icon">🎯</span>
+                <div class="dash-stat-info">
+                    <span class="dash-stat-number">12</span>
+                    <span class="dash-stat-label">Active Applications</span>
+                </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-actions">
+            <button class="dash-action-btn primary" onclick="showToast('Opening job search...', 'info')">
+                🔎 Find Work
+            </button>
+            <button class="dash-action-btn secondary" onclick="showToast('Opening portfolio editor...', 'info')">
+                📁 Update Portfolio
+            </button>
+            <button class="dash-action-btn secondary" onclick="showToast('Opening availability settings...', 'info')">
+                📅 Set Availability
+            </button>
+        </div>
+
+        <!-- Recommended Jobs Feed -->
+        <div class="profile-section">
+            <h3>🔥 Recommended for You</h3>
+            <div class="activity-list">
+                <div class="activity-item provider-job">
+                    <div class="activity-details" style="flex:1;">
+                        <p class="activity-title">🏠 House Cleaning - Westlands</p>
+                        <p class="activity-time">📍 2km away • ⏱️ 3 hrs • 💰 KSh 4,500</p>
+                    </div>
+                    <button class="btn-apply">Apply</button>
+                </div>
+                <div class="activity-item provider-job">
+                    <div class="activity-details" style="flex:1;">
+                        <p class="activity-title">🌱 Garden Maintenance - Karen</p>
+                        <p class="activity-time">📍 5km away • ⏱️ 4 hrs • 💰 KSh 6,000</p>
+                    </div>
+                    <button class="btn-apply">Apply</button>
+                </div>
+                <div class="activity-item provider-job">
+                    <div class="activity-details" style="flex:1;">
+                        <p class="activity-title">🔧 Plumbing Repair - CBD</p>
+                        <p class="activity-time">📍 1km away • ⏱️ 2 hrs • 💰 KSh 3,500</p>
+                    </div>
+                    <button class="btn-apply">Apply</button>
+                </div>
+        </div>
+
+        <!-- Skills & Equipment -->
+        <div class="provider-fields" id="providerProfile">
+            <h3>🔧 Skills & Equipment</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">🧹 Professional Cleaning</div>
+                <div class="skill-tag">🌿 Gardening</div>
+                <div class="skill-tag">🔧 Basic Repairs</div>
+                <div class="skill-tag">🚗 Own Transport</div>
+
+            <div class="hourly-rate-setting" style="margin:1.5rem 0; display:flex; align-items:center; gap:1rem;">
+                <label style="font-weight:600;">💵 Default Hourly Rate:</label>
+                <input type="number" value="500" min="100" step="50" style="padding:0.5rem; border-radius:8px; border:2px solid #ddd; width:100px;">
+                <span>KSh / hour</span>
+            </div>
+
+            <div class="form-group full-width">
+                <label style="font-weight:600;">📝 Professional Bio</label>
+                <textarea rows="4" style="width:100%; padding:0.75rem; border-radius:8px; border:2px solid #ddd;">Experienced professional with 5+ years in home services. Specialized in deep cleaning and garden maintenance. Reliable, punctual, and detail-oriented.</textarea>
+            </div>
+
+        <!-- Earnings Chart -->
+        <div class="recent-activity">
+            <h3>📈 Earnings Tracker</h3>
+            <div class="earnings-chart" style="display:flex; align-items:flex-end; gap:1rem; height:200px; padding:1rem; background:#f8f9fa; border-radius:12px;">
+                <div class="earnings-bar" style="flex:1; background:linear-gradient(to top, #1a5fa0, #64b5f6); border-radius:8px 8px 0 0; height:60%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding-bottom:0.5rem; color:white; font-weight:600;">
+                    <span style="font-size:0.8rem;">KSh 12k</span>
+                    <span style="font-size:0.7rem; opacity:0.8;">Jan</span>
+                </div>
+                <div class="earnings-bar" style="flex:1; background:linear-gradient(to top, #1a5fa0, #64b5f6); border-radius:8px 8px 0 0; height:80%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding-bottom:0.5rem; color:white; font-weight:600;">
+                    <span style="font-size:0.8rem;">KSh 15k</span>
+                    <span style="font-size:0.7rem; opacity:0.8;">Feb</span>
+                </div>
+                <div class="earnings-bar" style="flex:1; background:linear-gradient(to top, #1a5fa0, #64b5f6); border-radius:8px 8px 0 0; height:45%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding-bottom:0.5rem; color:white; font-weight:600;">
+                    <span style="font-size:0.8rem;">KSh 8k</span>
+                    <span style="font-size:0.7rem; opacity:0.8;">Mar</span>
+                </div>
+                <div class="earnings-bar" style="flex:1; background:linear-gradient(to top, #1a5fa0, #64b5f6); border-radius:8px 8px 0 0; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding-bottom:0.5rem; color:white; font-weight:600;">
+                    <span style="font-size:0.8rem;">KSh 10k</span>
+                    <span style="font-size:0.7rem; opacity:0.8;">Apr</span>
+                </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <h4>🧹 JODDY</h4>
+                <p>Connecting people with local help since 2024.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs-enhanced.html">Jobs</a></li>
+                    <li><a href="profile-enhanced.html">Profile</a></li>
+                    <li><a href="contact-enhanced.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="contact-enhanced.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 JODDY. All rights reserved.</p>
+        </div>
+</footer>
+
+<script src="joddy-enhanced.js"></script>
+<script src="role-dashboard.js"></script>
+</body>
+</html>

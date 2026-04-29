@@ -11,6 +11,19 @@
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
 
+<!-- Role Toggle Banner -->
+<div class="role-toggle-banner" id="roleBanner">
+    <div class="role-toggle-container">
+        <div class="current-role">
+            <span class="role-badge" id="currentRoleBadge">👔</span>
+            <span id="currentRoleText">Current Mode: <strong>Employer</strong></span>
+        </div>
+        <button class="switch-role-btn" id="switchRoleBtn" onclick="toggleUserRole()">
+            🔄 Switch to <span id="switchToText">Provider</span> Mode
+        </button>
+    </div>
+</div>
+
 <header class="site-header">
     <div class="header-container">
         <a href="index.html" class="logo">
@@ -20,10 +33,17 @@
                 <span class="tagline">Local Help, Earn Money</span>
             </div>
         </a>
-        <nav class="header-nav">
-            <a href="index.html">Home</a>
+        <nav class="header-nav" id="mainNav">
+            <!-- Employer Links -->
+            <a href="index.html" class="nav-employer">Home</a>
+            <a href="post-job.html" class="nav-employer">Post a Job</a>
+            <a href="my-listings.html" class="nav-employer">My Listings</a>
+            <!-- Provider Links (hidden by default) -->
+            <a href="index.html" class="nav-provider" style="display:none;">Home</a>
+            <a href="jobs-enhanced.html" class="nav-provider active" style="display:none;">Browse Tasks</a>
+            <a href="my-earnings.html" class="nav-provider" style="display:none;">My Earnings</a>
+            <!-- Common Links -->
             <a href="profile-enhanced.html">Profile</a>
-            <a href="jobs-enhanced.html" class="active">Jobs</a>
             <a href="contact-enhanced.html">Contact</a>
         </nav>
         <div class="header-actions">
@@ -39,7 +59,7 @@
     </div>
     <nav class="mobile-menu" id="mobile-menu">
         <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
-        <a href="homepage-enhanced.html">Home</a>
+        <a href="index.html">Home</a>
         <a href="profile-enhanced.html">Profile</a>
         <a href="jobs-enhanced.html">Jobs</a>
         <a href="contact-enhanced.html">Contact</a>

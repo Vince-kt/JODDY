@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Earnings - JODDY</title>
+    <link rel="stylesheet" href="style-enhanced.css">
+    <meta name="description" content="Track your earnings, payouts, and job history as a provider on JODDY.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧹</text></svg>">
+</head>
+<body class="provider-mode">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🧹</span>
+            <div class="logo-text">
+                <h1>JODDY</h1>
+                <span class="tagline">Local Help, Earn Money</span>
+            </div>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-provider">Home</a>
+            <a href="jobs-enhanced.html" class="nav-provider">Browse Tasks</a>
+            <a href="my-earnings.html" class="nav-provider active">My Earnings</a>
+            <a href="dashboard.html" class="nav-provider">Dashboard</a>
+            <a href="profile-enhanced.html">Profile</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn" aria-label="Notifications">🔔</button>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main id="main" class="container" style="padding-top: 2rem;">
+    <section class="fade-in">
+        <div class="profile-hero" style="background: linear-gradient(135deg, #1a5fa0 0%, #2563eb 100%);">
+            <h2>💰 My Earnings</h2>
+            <p>Track your income, payouts, and job history</p>
+        </div>
+    </section>
+
+    <section class="earnings-summary cards-grid">
+        <div class="dash-stat-card provider" style="grid-column: span 2;">
+            <span class="dash-stat-icon">💳</span>
+            <div>
+                <span class="dash-stat-number">KSh 45,200</span>
+                <span class="dash-stat-label">Total Lifetime Earnings</span>
+            </div>
+        </div>
+        <div class="dash-stat-card provider">
+            <span class="dash-stat-icon">📈</span>
+            <div>
+                <span class="dash-stat-number">KSh 12,500</span>
+                <span class="dash-stat-label">This Month</span>
+            </div>
+        </div>
+        <div class="dash-stat-card provider">
+            <span class="dash-stat-icon">⏳</span>
+            <div>
+                <span class="dash-stat-number">KSh 8,700</span>
+                <span class="dash-stat-label">Pending Payout</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="cards-grid">
+        <article class="card">
+            <h4>📊 Earnings Chart</h4>
+            <div style="height: 300px; background: #f8f9fa; border-radius: 12px; display: flex; align-items: end; padding: 1rem; gap: 0.5rem;">
+                <div style="flex: 1; background: linear-gradient(to top, #64b5f6, #1a5fa0); height: 60%; border-radius: 8px 8px 0 0;"></div>
+                <div style="flex: 1; background: linear-gradient(to top, #64b5f6, #1a5fa0); height: 80%; border-radius: 8px 8px 0 0;"></div>
+                <div style="flex: 1; background: linear-gradient(to top, #64b5f6, #1a5fa0); height: 45%; border-radius: 8px 8px 0 0;"></div>
+                <div style="flex: 1; background: linear-gradient(to top, #64b5f6, #1a5fa0); height: 100%; border-radius: 8px 8px 0 0;"></div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; color: #666;">Last 4 months</p>
+        </article>
+
+        <article class="card">
+            <h4>💳 Payout Methods</h4>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <span class="activity-badge success">✅</span>
+                    <div>M-Pesa: +254712345678</div>
+                    <span>KSh 8,700 available</span>
+                </div>
+            </div>
+            <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="showToast('Payout requested!', 'success')">💸 Request Payout</button>
+        </article>
+    </div>
+
+    <section class="activity-section fade-in">
+        <h3>📜 Recent Jobs</h3>
+        <div class="activity-list">
+            <div class="activity-item provider-job">
+                <div>
+                    <p>🧹 House Cleaning</p>
+                    <p style="font-size: 0.9rem; color: #666;">Completed yesterday</p>
+                </div>
+                <div style="text-align: right;">
+                    <div>KSh 5,000</div>
+                    <div>⭐ 5.0</div>
+                </div>
+            </div>
+            <!-- More jobs... -->
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2026 JODDY. All rights reserved.</p>
+</footer>
+
+<script src="joddy-enhanced.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        showToast('Your earnings overview', 'info');
+    });
+</script>
+</body>
+</html>

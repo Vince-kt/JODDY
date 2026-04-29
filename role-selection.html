@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role - JODDY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧹</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .role-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .role-card.selected {
+            border-color: #06531d;
+            background: linear-gradient(135deg, rgba(6,83,29,0.05) 0%, rgba(124,255,129,0.1) 100%);
+        }
+        
+        .role-card.selected .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .checkmark {
+            animation: checkPop 0.4s ease forwards;
+        }
+        
+        @keyframes checkPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen">
+    
+    <!-- Main Container -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+        
+        <!-- Logo & Header -->
+        <div class="text-center mb-8 fade-in" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-green-700 rounded-2xl mb-4 shadow-lg">
+                <span class="text-4xl">🧹</span>
+            </div>
+            <h1 class="text-3xl font-extrabold text-green-800">JODDY</h1>
+            <p class="text-green-600 text-sm mt-1">Local Help, Earn Money</p>
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="text-center mb-10 fade-in" style="animation-delay: 0.2s;">
+            <div class="inline-block px-4 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-4">
+                <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-2 pulse"></span>
+                First-time login detected
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+                Welcome to JODDY! 👋
+            </h2>
+            <p class="text-gray-600 text-lg max-w-lg mx-auto">
+                To get started, please select how you want to use JODDY. 
+                This helps us show you the right features.
+            </p>
+        </div>
+
+        <!-- Role Selection Cards -->
+        <form id="roleSelectionForm" class="w-full max-w-4xl fade-in" style="animation-delay: 0.3s;">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                
+                <!-- Employer Card -->
+                <label class="cursor-pointer">
+                    <input type="radio" name="userRole" value="employer" class="sr-only peer" required>
+                    <div class="role-card relative bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-lg transition-all duration-300 peer-checked:border-green-600 peer-checked:bg-green-50">
+                        <!-- Selected Indicator -->
+                        <div class="check-icon absolute top-4 right-4 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center opacity-0 transform scale-0 transition-all duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Icon -->
+                        <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <span class="text-5xl">👔</span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">
+                            I'm an Employer
+                        </h3>
+                        <p class="text-green-700 font-semibold text-center mb-4">
+                            "I want to hire help"
+                        </p>
+                        <p class="text-gray-600 text-center text-sm mb-6">
+                            I need workers to help with cleaning, gardening, repairs, and other tasks around my home or business.
+                        </p>
+                        
+                        <!-- Features List -->
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Post jobs and find workers
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Browse worker profiles
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Manage active listings
+                            </li>
+                        </ul>
+                    </div>
+                </label>
+
+                <!-- Provider Card -->
+                <label class="cursor-pointer">
+                    <input type="radio" name="userRole" value="provider" class="sr-only peer" required>
+                    <div class="role-card relative bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-lg transition-all duration-300 peer-checked:border-blue-600 peer-checked:bg-blue-50">
+                        <!-- Selected Indicator -->
+                        <div class="check-icon absolute top-4 right-4 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center opacity-0 transform scale-0 transition-all duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Icon -->
+                        <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <span class="text-5xl">🔧</span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">
+                            I'm a Provider
+                        </h3>
+                        <p class="text-blue-700 font-semibold text-center mb-4">
+                            "I want to work"
+                        </p>
+                        <p class="text-gray-600 text-center text-sm mb-6">
+                            I have skills and availability to help others with odd jobs, and I want to earn money in my free time.
+                        </p>
+                        
+                        <!-- Features List -->
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Browse and apply for jobs
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Build your profile & portfolio
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Track earnings & ratings
+                            </li>
+                        </ul>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-10 text-center fade-in" style="animation-delay: 0.4s;">
+                <button 
+                    type="submit" 
+                    id="continueBtn"
+                    disabled
+                    class="w-full max-w-md px-8 py-4 bg-gray-300 text-gray-500 font-bold text-lg rounded-xl cursor-not-allowed transition-all duration-300 disabled:hover:transform-none disabled:shadow-none">
+                    Continue to JODDY →
+                </button>
+                <p class="text-gray-500 text-sm mt-4">
+                    🔒 You can change your role anytime in settings
+                </p>
+            </div>
+        </form>
+
+        <!-- Skip Option (for demo) -->
+        <div class="mt-8 text-center fade-in" style="animation-delay: 0.5s;">
+            <button 
+                onclick="skipRoleSelection()" 
+                class="text-gray-400 hover:text-gray-600 text-sm underline">
+                Skip for now (Demo Mode)
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-white/90 flex items-center justify-center z-50 hidden">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-gray-700 font-medium">Setting up your account...</p>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // ROLE SELECTION LOGIC
+        // ==========================================
+        
+        const form = document.getElementById('roleSelectionForm');
+        const continueBtn = document.getElementById('continueBtn');
+        const radioButtons = document.querySelectorAll('input[name="userRole"]');
+        
+        // Enable continue button when a role is selected
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    // Enable button
+                    continueBtn.disabled = false;
+                    continueBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
+                    continueBtn.classList.add('bg-green-700', 'text-white', 'hover:bg-green-800', 'hover:shadow-xl');
+                    continueBtn.textContent = 'Continue to JODDY →';
+                }
+            });
+        });
+        
+        // Handle form submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const selectedRole = document.querySelector('input[name="userRole"]:checked').value;
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+            
+            // Simulate API call to save role
+            await saveRoleToDatabase(selectedRole);
+        });
+        
+        // ==========================================
+        // DATABASE UPDATE (Simulated)
+        // ==========================================
+        
+        async function saveRoleToDatabase(role) {
+            // In a real app, this would be an API call:
+            // POST /api/user/role
+            // { userRole: 'employer' | 'provider' }
+            
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // Save to localStorage (simulating database)
+                    localStorage.setItem('joddy-user-role', role);
+                    localStorage.setItem('joddy-role-selected', 'true');
+                    localStorage.setItem('joddy-first-login', 'false');
+                    
+                    console.log('✅ Role saved to database:', {
+                        user_role: role,
+                        timestamp: new Date().toISOString()
+                    });
+                    
+                    resolve({ success: true, role: role });
+                }, 1500);
+            }).then(result => {
+                // Redirect based on role
+                const redirectPage = result.role === 'employer' 
+                    ? 'index.html' 
+                    : 'index.html';
+                
+                window.location.href = redirectPage;
+            });
+        }
+        
+        // ==========================================
+        // MIDDLEWARE CHECK (Simulated)
+        // ==========================================
+        
+        /**
+         * This function would be called in your actual middleware
+         * to check if user has a role before allowing access
+         */
+        function checkRoleMiddleware(req, res, next) {
+            const role = localStorage.getItem('joddy-user-role');
+            const roleSelected = localStorage.getItem('joddy-role-selected');
+            
+            // If no role selected, redirect to role selection
+            if (!role || roleSelected !== 'true') {
+                window.location.href = 'role-selection.html';
+                return;
+            }
+            
+            // Continue to next middleware/route
+            next();
+        }
+        
+        // Skip for demo purposes
+        function skipRoleSelection() {
+            localStorage.setItem('joddy-user-role', 'employer');
+            localStorage.setItem('joddy-role-selected', 'true');
+            localStorage.setItem('joddy-first-login', 'false');
+            window.location.href = 'index.html';
+        }
+        
+        // Check if already has role (redirect if not first login)
+        document.addEventListener('DOMContentLoaded', function() {
+            const hasRole = localStorage.getItem('joddy-user-role');
+            const roleSelected = localStorage.getItem('joddy-role-selected');
+            
+            // If user already has a role, redirect to main app
+            if (hasRole && roleSelected === 'true') {
+                // Uncomment in production:
+                // window.location.href = 'index.html';
+                console.log('User already has role:', hasRole);
+            }
+        });
+    </script>
+</body>
+</html>

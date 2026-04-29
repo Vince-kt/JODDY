@@ -1,6 +1,27 @@
 // JODDY Enhanced JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
+    // ==========================================
+    // MANDATORY ONBOARDING GATE
+    // Redirects users with no role to role selection page
+    // Backend equivalent: requireRole middleware (see middleware/authMiddleware.js)
+    // ==========================================
+    (function enforceRoleGate() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const roleSelected = localStorage.getItem('joddy-role-selected');
+        const userRole = localStorage.getItem('joddy-user-role');
+
+        // Skip gate on role-selection page itself and allow demo override
+        const isRolePage = currentPage === 'role-selection.html';
+        const skipGate = new URLSearchParams(window.location.search).get('skip') === 'true';
+
+        if (!isRolePage && !skipGate && (!roleSelected || roleSelected !== 'true' || !userRole)) {
+            // Simulate middleware redirect: res.redirect('/role-selection')
+            window.location.href = 'role-selection.html?redirect=' + encodeURIComponent(currentPage);
+            return; // Stop further execution
+        }
+    })();
+
     // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
@@ -143,3 +164,104 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ==========================================
+// ROLE TOGGLE FUNCTIONALITY
+// ==========================================
+
+function toggleUserRole() {
+    const currentRole = localStorage.getItem('joddy-user-role') || 'employer';
+    const newRole = currentRole === 'employer' ? 'provider' : 'employer';
+    
+    localStorage.setItem('joddy-user-role', newRole);
+    updateDashboardView(newRole);
+    
+    const message = newRole === 'employer' 
+        ? 'Switched to Employer Mode — Post jobs and hire providers!'
+        : 'Switched to Provider Mode — Find work and earn money!';
+    showToast(message, 'success');
+}
+
+function updateDashboardView(role) {
+    // Update banner
+    const roleBadge = document.getElementById('currentRoleBadge');
+    const roleText = document.getElementById('currentRoleText');
+    const switchToText = document.getElementById('switchToText');
+    const banner = document.getElementById('roleBanner');
+    
+    if (roleBadge && roleText && switchToText && banner) {
+        if (role === 'employer') {
+            roleBadge.textContent = '👔';
+            roleText.innerHTML = 'Current Mode: <strong>Employer</strong>';
+            switchToText.textContent = 'Provider';
+            banner.classList.remove('provider-mode');
+        } else {
+            roleBadge.textContent = '🔧';
+            roleText.innerHTML = 'Current Mode: <strong>Provider</strong>';
+            switchToText.textContent = 'Employer';
+            banner.classList.add('provider-mode');
+        }
+    }
+    
+    // Toggle dashboards (dashboard.html)
+    const employerDash = document.getElementById('employerDashboard');
+    const providerDash = document.getElementById('providerDashboard');
+    
+    if (employerDash) employerDash.classList.toggle('hidden', role !== 'employer');
+    if (providerDash) providerDash.classList.toggle('hidden', role !== 'provider');
+    
+    // Toggle profile-specific sections (profile-enhanced.html)
+    const employerProfile = document.getElementById('employerProfile');
+    const providerProfile = document.getElementById('providerProfile');
+    
+    if (employerProfile) employerProfile.classList.toggle('hidden', role !== 'employer');
+    if (providerProfile) providerProfile.classList.toggle('hidden', role !== 'provider');
+    
+    // Toggle employer-specific fields (profile-enhanced.html)
+    document.querySelectorAll('.employer-field').forEach(el => {
+        el.classList.toggle('hidden', role !== 'employer');
+    });
+    
+    // Toggle provider-specific fields (profile-enhanced.html)
+    document.querySelectorAll('.provider-field').forEach(el => {
+        el.classList.toggle('hidden', role !== 'provider');
+    });
+    
+    // Toggle employer job history section
+    const employerJobHistory = document.getElementById('employerJobHistory');
+    if (employerJobHistory) employerJobHistory.classList.toggle('hidden', role !== 'employer');
+    
+    // Toggle provider skills section
+    const providerSkillsSection = document.getElementById('providerSkillsSection');
+    if (providerSkillsSection) providerSkillsSection.classList.toggle('hidden', role !== 'provider');
+    
+    // Toggle provider activity section
+    const providerActivity = document.getElementById('providerActivity');
+    if (providerActivity) providerActivity.classList.toggle('hidden', role !== 'provider');
+    
+    // Toggle navigation
+    const employerNav = document.querySelectorAll('.nav-employer');
+    const providerNav = document.querySelectorAll('.nav-provider');
+    
+    employerNav.forEach(el => {
+        if (el) el.style.display = role === 'employer' ? '' : 'none';
+    });
+    providerNav.forEach(el => {
+        if (el) el.style.display = role === 'provider' ? '' : 'none';
+    });
+    
+    // Update document theme color for visual identity
+    let metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (!metaTheme) {
+        metaTheme = document.createElement('meta');
+        metaTheme.name = 'theme-color';
+        document.head.appendChild(metaTheme);
+    }
+    metaTheme.content = role === 'employer' ? '#06531d' : '#1a5fa0';
+}
+
+// Initialize role on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const savedRole = localStorage.getItem('joddy-user-role') || 'employer';
+    updateDashboardView(savedRole);
+});
